@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saveurs d'Abidjan - Restaurant Ivoirien Authentique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warm-orange': '#FF6B35',
+                        'deep-red': '#C73E1D',
+                        'rich-brown': '#8B4513',
+                        'golden': '#DAA520'
+                    },
+                    fontFamily: {
+                        'elegant': ['Georgia', 'serif'],
+                        'modern': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(199, 62, 29, 0.6), rgba(139, 69, 19, 0.6)), 
+                        url('https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .dish-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #fff 0%, #fef7f0 100%);
+        }
+        
+        .dish-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(199, 62, 29, 0.2);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B35 0%, #C73E1D 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #C73E1D 0%, #8B4513 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(199, 62, 29, 0.3);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="font-modern bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-elegant font-bold text-deep-red">🍽️ Saveurs d'Abidjan</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#accueil" class="text-gray-700 hover:text-warm-orange transition-colors px-3 py-2">Accueil</a>
+                        <a href="menu.html" class="text-gray-700 hover:text-warm-orange transition-colors px-3 py-2">Menu</a>
+                        <a href="#apropos" class="text-gray-700 hover:text-warm-orange transition-colors px-3 py-2">À propos</a>
+                        <a href="#galerie" class="text-gray-700 hover:text-warm-orange transition-colors px-3 py-2">Galerie</a>
+                        <a href="#contact" class="text-gray-700 hover:text-warm-orange transition-colors px-3 py-2">Contact</a>
+                        <div class="flex space-x-2">
+                            <button onclick="openReservation()" class="btn-primary text-white px-6 py-2 rounded-full font-semibold">
+                                Réserver
+                            </button>
+                            <button onclick="openCommander()" class="bg-golden hover:bg-yellow-600 text-white px-6 py-2 rounded-full font-semibold transition-all">
+                                Commander
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-warm-orange">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#accueil" class="block px-3 py-2 text-gray-700 hover:text-warm-orange">Accueil</a>
+                <a href="#menu" class="block px-3 py-2 text-gray-700 hover:text-warm-orange">Menu</a>
+                <a href="#apropos" class="block px-3 py-2 text-gray-700 hover:text-warm-orange">À propos</a>
+                <a href="#galerie" class="block px-3 py-2 text-gray-700 hover:text-warm-orange">Galerie</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-warm-orange">Contact</a>
+                <div class="flex space-x-2 px-3 py-2">
+                    <button onclick="openReservation()" class="btn-primary text-white px-4 py-2 rounded-full text-sm font-semibold">
+                        Réserver
+                    </button>
+                    <button onclick="openCommander()" class="bg-golden text-white px-4 py-2 rounded-full text-sm font-semibold">
+                        Commander
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-bg min-h-screen flex items-center justify-center text-white">
+        <div class="text-center px-4 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-elegant font-bold mb-6 drop-shadow-lg">
+                Saveurs d'Abidjan
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90 drop-shadow-md">
+                Découvrez l'authenticité de la cuisine ivoirienne dans un cadre moderne et chaleureux
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openReservation()" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold drop-shadow-lg">
+                    🍽️ Réserver une table
+                </button>
+                <button onclick="openWhatsAppOrder()" class="bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full text-lg font-semibold transition-all drop-shadow-lg flex items-center space-x-2 mx-auto">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                    <span>Commander sur WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- À propos Section -->
+    <section id="apropos" class="py-20 bg-gradient-to-br from-warm-orange to-deep-red text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-elegant font-bold mb-6">À propos du Chef</h2>
+                    <p class="text-xl mb-6 opacity-90">
+                        Née à Abidjan, Chef Aminata Koné a grandi entourée des saveurs authentiques de la cuisine ivoirienne. 
+                        Après avoir perfectionné son art dans les plus grandes cuisines d'Europe, elle revient aux sources 
+                        pour vous faire découvrir la richesse culinaire de la Côte d'Ivoire.
+                    </p>
+                    <p class="text-lg mb-8 opacity-80">
+                        "Chaque plat raconte une histoire, chaque saveur évoque un souvenir. 
+                        Ma mission est de partager l'âme de la cuisine ivoirienne avec authenticité et modernité."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                            <span class="text-2xl">👩🏾‍🍳</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold">Chef Aminata Koné</h4>
+                            <p class="opacity-80">Fondatrice & Chef Exécutive</p>
+                            <div class="flex space-x-1 mt-1">
+                                <span class="text-golden">⭐⭐⭐⭐⭐</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="w-full h-96 rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chef Aminata Koné" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-golden rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-3xl">🏆</span>
+                    </div>
+                    <div class="absolute -top-6 -left-6 w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <span class="text-2xl">🇨🇮</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie Section -->
+    <section id="galerie" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-elegant font-bold text-deep-red mb-4">Galerie</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Découvrez l'ambiance chaleureuse de notre restaurant et nos créations culinaires authentiques
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ambiance restaurant" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Plat africain" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Riz jollof" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Viande grillée" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg col-span-2">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Intérieur restaurant" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Salade fraîche" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Boissons tropicales" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Plat traditionnel" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kedjenou" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Attiéké poisson" class="w-full h-48 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg col-span-2">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chef en cuisine" class="w-full h-48 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-deep-red text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-elegant font-bold mb-4">Contactez-nous</h2>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                    Venez nous rendre visite ou contactez-nous pour toute information
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Informations de contact -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-8">Informations pratiques</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                <span class="text-xl">📍</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Adresse</p>
+                                <p class="opacity-80">Cocody Riviera Palmeraie, Abidjan, Côte d'Ivoire</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                <span class="text-xl">📞</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Téléphone</p>
+                                <p class="opacity-80">+225 07 08 09 10 11</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 whatsapp-btn rounded-full flex items-center justify-center cursor-pointer" onclick="openWhatsApp()">
+                                <span class="text-xl">💬</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold">WhatsApp</p>
+                                <p class="opacity-80 cursor-pointer hover:text-green-300 transition-colors" onclick="openWhatsApp()">+225 07 08 09 10 11</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                <span class="text-xl">🕒</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Horaires</p>
+                                <p class="opacity-80">Lun-Dim: 11h-15h / 18h-23h</p>
+                                <p class="opacity-80">Service continu le weekend</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                <span class="text-xl">✉️</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Email</p>
+                                <p class="opacity-80">contact@saveursdabidjan.ci</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Boutons d'action -->
+                    <div class="mt-8 space-y-4">
+                        <button onclick="openWhatsApp()" class="w-full whatsapp-btn text-white py-4 rounded-lg font-semibold flex items-center justify-center space-x-2">
+                            <span class="text-xl">💬</span>
+                            <span>Commander via WhatsApp</span>
+                        </button>
+                        <button onclick="openReservation()" class="w-full bg-golden hover:bg-yellow-600 text-white py-4 rounded-lg font-semibold transition-all">
+                            🍽️ Réserver une table
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Carte Google Maps -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Localisation</h3>
+                    <div class="bg-white bg-opacity-10 p-6 rounded-2xl backdrop-blur-sm">
+                        <div class="w-full h-80 bg-gradient-to-br from-warm-orange to-deep-red rounded-lg flex items-center justify-center relative overflow-hidden">
+                            <!-- Simulation de carte Google Maps -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-400 to-blue-500 opacity-20"></div>
+                            <div class="text-center z-10">
+                                <div class="text-6xl mb-4">🗺️</div>
+                                <p class="text-lg font-semibold">Cocody Riviera Palmeraie</p>
+                                <p class="opacity-80">Abidjan, Côte d'Ivoire</p>
+                                <button onclick="openGoogleMaps()" class="mt-4 bg-white text-deep-red px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                    Voir sur Google Maps
+                                </button>
+                            </div>
+                            <!-- Points de repère simulés -->
+                            <div class="absolute top-4 left-4 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                            <div class="absolute bottom-6 right-8 w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm opacity-80">Parking gratuit disponible • Accessible en transport public</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bouton WhatsApp Flottant -->
+    <div id="whatsapp-float" class="fixed bottom-6 right-6 z-50">
+        <button onclick="openWhatsAppOrder()" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 animate-pulse">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </button>
+        <div class="absolute -top-2 -left-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center animate-bounce">
+            !
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-rich-brown text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-elegant font-bold mb-4">🍽️ Saveurs d'Abidjan</h3>
+                    <p class="opacity-80 mb-4">
+                        L'authenticité de la cuisine ivoirienne dans un cadre moderne et chaleureux.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="w-10 h-10 bg-warm-orange rounded-full flex items-center justify-center cursor-pointer hover:bg-deep-red transition-colors">
+                            <span class="text-sm">📘</span>
+                        </div>
+                        <div class="w-10 h-10 bg-warm-orange rounded-full flex items-center justify-center cursor-pointer hover:bg-deep-red transition-colors">
+                            <span class="text-sm">📷</span>
+                        </div>
+                        <div class="w-10 h-10 whatsapp-btn rounded-full flex items-center justify-center cursor-pointer" onclick="openWhatsApp()">
+                            <span class="text-sm">💬</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Menu</h4>
+                    <ul class="space-y-2 opacity-80">
+                        <li><a href="#menu" class="hover:text-warm-orange transition-colors">Plats principaux</a></li>
+                        <li><a href="#menu" class="hover:text-warm-orange transition-colors">Boissons</a></li>
+                        <li><a href="#menu" class="hover:text-warm-orange transition-colors">Spécialités</a></li>
+                        <li><a href="#menu" class="hover:text-warm-orange transition-colors">Menu du jour</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 opacity-80">
+                        <li><a href="#" class="hover:text-warm-orange transition-colors">Livraison</a></li>
+                        <li><a href="#" class="hover:text-warm-orange transition-colors">À emporter</a></li>
+                        <li><a href="#" class="hover:text-warm-orange transition-colors">Événements privés</a></li>
+                        <li><a href="#" class="hover:text-warm-orange transition-colors">Traiteur</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <div class="space-y-2 opacity-80 text-sm">
+                        <p>📍 Cocody Riviera Palmeraie</p>
+                        <p>📞 +225 07 08 09 10 11</p>
+                        <p>💬 WhatsApp disponible</p>
+                        <p>✉️ contact@saveursdabidjan.ci</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center opacity-60">
+                <p>&copy; 2024 Saveurs d'Abidjan. Tous droits réservés. | Cuisine authentique ivoirienne 🇨🇮</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de réservation -->
+    <div id="reservation-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8 relative">
+            <button onclick="closeReservation()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
+                ×
+            </button>
+            <h3 class="text-2xl font-elegant font-bold text-deep-red mb-6">🍽️ Réservation</h3>
+            <p class="text-gray-600 mb-6">
+                Réservez votre table pour une expérience culinaire authentique !
+            </p>
+            <div class="space-y-4">
+                <input type="text" placeholder="Votre nom" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-orange focus:border-transparent">
+                <input type="tel" placeholder="Numéro de téléphone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-orange focus:border-transparent">
+                <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-orange focus:border-transparent">
+                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-warm-orange focus:border-transparent">
+                    <option value="">Nombre de personnes</option>
+                    <option value="1">1 personne</option>
+                    <option value="2">2 personnes</option>
+                    <option value="3">3 personnes</option>
+                    <option value="4">4 personnes</option>
+                    <option value="5+">5+ personnes</option>
+                </select>
+                <button class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
+                    Confirmer la réservation
+                </button>
+                <button onclick="openWhatsApp()" class="w-full whatsapp-btn text-white py-3 rounded-lg font-semibold">
+                    💬 Réserver via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de commande -->
+    <div id="commander-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8 relative">
+            <button onclick="closeCommander()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
+                ×
+            </button>
+            <h3 class="text-2xl font-elegant font-bold text-deep-red mb-6">🛵 Commander</h3>
+            <p class="text-gray-600 mb-6">
+                Commandez vos plats préférés pour livraison ou à emporter !
+            </p>
+            <div class="space-y-4">
+                <button onclick="openWhatsApp()" class="w-full whatsapp-btn text-white py-4 rounded-lg font-semibold flex items-center justify-center space-x-2">
+                    <span class="text-xl">💬</span>
+                    <span>Commander via WhatsApp</span>
+                </button>
+                <div class="text-center text-gray-500">
+                    <p class="text-sm">Ou appelez-nous directement :</p>
+                    <p class="text-lg font-semibold text-deep-red">+225 07 08 09 10 11</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modal de réservation
+        function openReservation() {
+            document.getElementById('reservation-modal').classList.remove('hidden');
+        }
+
+        function closeReservation() {
+            document.getElementById('reservation-modal').classList.add('hidden');
+        }
+
+        // Modal de commande
+        function openCommander() {
+            document.getElementById('commander-modal').classList.remove('hidden');
+        }
+
+        function closeCommander() {
+            document.getElementById('commander-modal').classList.add('hidden');
+        }
+
+        // WhatsApp
+        function openWhatsApp() {
+            const phoneNumber = "22507080910111"; // Remplacez par le vrai numéro
+            const message = "Bonjour ! Je souhaiterais commander ou réserver une table chez Saveurs d'Abidjan.";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // WhatsApp pour commandes (bouton flottant)
+        function openWhatsAppOrder() {
+            const phoneNumber = "22507080910111"; // Remplacez par le vrai numéro
+            const message = "Bonjour, je souhaite passer une commande, pouvez-vous m'aider ?";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Google Maps
+        function openGoogleMaps() {
+            const address = "Cocody Riviera Palmeraie, Abidjan, Côte d'Ivoire";
+            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+            window.open(mapsUrl, '_blank');
+        }
+
+        // Smooth scrolling pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fermer les modals en cliquant à l'extérieur
+        document.getElementById('reservation-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeReservation();
+            }
+        });
+
+        document.getElementById('commander-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCommander();
+            }
+        });
+
+        // Animation au scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-opacity-95');
+            } else {
+                navbar.classList.remove('bg-opacity-95');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'967f3007778d0362',t:'MTc1Mzk4Njg0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

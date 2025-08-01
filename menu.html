@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Restaurant Ivoirien</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warm-orange': '#FF6B35',
+                        'deep-red': '#C73E1D',
+                        'rich-brown': '#8B4513',
+                        'golden': '#DAA520',
+                        'cream': '#FFF8DC'
+                    },
+                    fontFamily: {
+                        'elegant': ['Georgia', 'serif'],
+                        'modern': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .menu-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #fff 0%, #fef7f0 100%);
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(199, 62, 29, 0.15);
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #FF6B35 0%, #C73E1D 100%);
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, #DAA520 0%, #FF6B35 100%);
+        }
+    </style>
+</head>
+<body class="font-modern bg-cream">
+    <!-- Bouton de retour -->
+    <div class="fixed top-6 left-6 z-50">
+        <button onclick="retourAccueil()" class="bg-white hover:bg-gray-50 text-deep-red border-2 border-deep-red px-6 py-3 rounded-full font-semibold flex items-center space-x-2 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            <span>Retour</span>
+        </button>
+    </div>
+
+    <!-- Section Menu -->
+    <section class="py-16 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- En-tête de la section -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-elegant font-bold text-deep-red mb-4">
+                    🍽️ Notre Menu Authentique
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Découvrez les saveurs authentiques de la Côte d'Ivoire avec nos plats traditionnels 
+                    préparés selon les recettes ancestrales
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-warm-orange to-deep-red mx-auto mt-6"></div>
+            </div>
+
+            <!-- ENTRÉES -->
+            <div class="mb-16">
+                <div class="category-header text-white p-6 rounded-t-2xl flex items-center justify-center space-x-4">
+                    <div class="text-4xl">🥗</div>
+                    <h3 class="text-3xl font-elegant font-bold">Entrées & Amuse-bouches</h3>
+                </div>
+                
+                <div class="bg-white rounded-b-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Salade d'avocat -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salade d'Avocat aux Crevettes" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Salade d'Avocat aux Crevettes</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">2 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Avocat frais, crevettes grillées, tomates cerises et vinaigrette à l'huile de palme
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Beignets de crevettes -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beignets de Crevettes" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Beignets de Crevettes</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">3 000 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Crevettes fraîches enrobées d'une pâte épicée, servies avec sauce pimentée
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Salade de papaye -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salade de Papaye Verte" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Salade de Papaye Verte</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">2 000 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Papaye râpée, tomates, arachides grillées et sauce vinaigrette épicée
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Accras de morue -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Accras de Morue" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Accras de Morue</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">2 800 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Beignets de morue dessalée aux épices créoles, croustillants à souhait
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Soupe de poisson -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Soupe de Poisson Fumé" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Soupe de Poisson Fumé</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">3 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Bouillon parfumé au poisson fumé, légumes frais et épices traditionnelles
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Plantains grillés -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plantains Grillés" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Plantains Grillés</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">1 800 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Bananes plantains mûres grillées, servies avec sauce tomate épicée
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-8">
+                        <button onclick="commanderWhatsApp('entrées')" class="whatsapp-btn text-white px-8 py-3 rounded-full font-semibold flex items-center space-x-2 mx-auto hover:shadow-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            <span>Commander les Entrées</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLATS PRINCIPAUX -->
+            <div class="mb-16">
+                <div class="category-header text-white p-6 rounded-t-2xl flex items-center justify-center space-x-4">
+                    <div class="text-4xl">🍛</div>
+                    <h3 class="text-3xl font-elegant font-bold">Plats Principaux</h3>
+                </div>
+                
+                <div class="bg-white rounded-b-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Attiéké Poisson -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Attiéké Poisson Grillé" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Attiéké Poisson Grillé</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">9 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Semoule de manioc accompagnée de poisson frais grillé, légumes et sauce tomate épicée
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Kedjenou -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kedjenou de Poulet" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Kedjenou de Poulet</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">11 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Poulet fermier mijoté aux légumes dans une sauce parfumée aux épices traditionnelles
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Foutou -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Foutou Banane Sauce Graine" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Foutou Banane Sauce Graine</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">10 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Pâte de banane plantain pilée avec sauce graine et viande de bœuf tendre
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Riz Jollof -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Riz Jollof au Poulet" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Riz Jollof au Poulet</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">8 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Riz parfumé à la tomate avec morceaux de poulet, légumes et épices ouest-africaines
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Sauce Arachide -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sauce Arachide au Bœuf" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Sauce Arachide au Bœuf</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">12 000 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Sauce onctueuse aux arachides avec bœuf, légumes et riz blanc parfumé
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Poisson Braisé -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Poisson Braisé Complet" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Poisson Braisé Complet</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">13 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Poisson frais braisé aux épices, accompagné d'attiéké et de légumes sautés
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Alloco -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Alloco Complet" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Alloco Complet</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">7 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Bananes plantains frites avec œuf, thon, tomates fraîches et oignons
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Garba -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garba Traditionnel" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Garba Traditionnel</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">6 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Attiéké avec thon, œuf dur, tomates et piment dans une sauce savoureuse
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Sauce Gombo -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sauce Gombo au Poisson" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Sauce Gombo au Poisson</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">9 800 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Gombo frais mijoté avec poisson fumé, crevettes et foutou d'igname
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-8">
+                        <button onclick="commanderWhatsApp('plats principaux')" class="whatsapp-btn text-white px-8 py-3 rounded-full font-semibold flex items-center space-x-2 mx-auto hover:shadow-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            <span>Commander les Plats Principaux</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DESSERTS -->
+            <div class="mb-16">
+                <div class="category-header text-white p-6 rounded-t-2xl flex items-center justify-center space-x-4">
+                    <div class="text-4xl">🍰</div>
+                    <h3 class="text-3xl font-elegant font-bold">Desserts & Douceurs</h3>
+                </div>
+                
+                <div class="bg-white rounded-b-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Beignets -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beignets Sucrés" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Beignets Sucrés</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">2 000 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Beignets moelleux saupoudrés de sucre glace, servis chauds avec miel local
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Salade de fruits -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1546173159-315724a31696?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salade de Fruits Tropicaux" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Salade de Fruits Tropicaux</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">3 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Mangue, ananas, papaye, banane et passion, arrosés de jus de citron vert
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Flan coco -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Flan à la Noix de Coco" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Flan à la Noix de Coco</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">2 800 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Flan onctueux au lait de coco frais avec caramel et copeaux de coco grillés
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Bananes flambées -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bananes Flambées" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Bananes Flambées</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">4 000 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Bananes caramélisées flambées au rhum, servies avec glace vanille artisanale
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Mousse chocolat -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mousse au Chocolat Ivoirien" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Mousse au Chocolat Ivoirien</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">3 200 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Mousse légère au chocolat de Côte d'Ivoire, décorée de copeaux de cacao
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Tarte mangue -->
+                        <div class="menu-card rounded-xl border border-gray-100 overflow-hidden">
+                            <div class="h-40 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tarte à la Mangue" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-3">
+                                    <h4 class="text-lg font-bold text-deep-red">Tarte à la Mangue</h4>
+                                    <span class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">3 800 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-sm leading-relaxed">
+                                    Pâte sablée garnie de crème pâtissière et lamelles de mangue fraîche
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-8">
+                        <button onclick="commanderWhatsApp('desserts')" class="whatsapp-btn text-white px-8 py-3 rounded-full font-semibold flex items-center space-x-2 mx-auto hover:shadow-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            <span>Commander les Desserts</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOISSONS -->
+            <div class="mb-16">
+                <div class="category-header text-white p-6 rounded-t-2xl flex items-center justify-center space-x-4">
+                    <div class="text-4xl">🥤</div>
+                    <h3 class="text-3xl font-elegant font-bold">Boissons & Rafraîchissements</h3>
+                </div>
+                
+                <div class="bg-white rounded-b-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Boissons traditionnelles -->
+                        <div class="space-y-4">
+                            <h5 class="text-lg font-bold text-warm-orange border-b-2 border-warm-orange pb-2">Traditionnelles</h5>
+                            
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Bissap</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">2 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Hibiscus frais, menthe et gingembre</p>
+                            </div>
+
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Gingembre</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">2 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Jus de gingembre épicé et rafraîchissant</p>
+                            </div>
+
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Jus de Baobab</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">3 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Riche en vitamines, goût unique</p>
+                            </div>
+                        </div>
+
+                        <!-- Jus de fruits -->
+                        <div class="space-y-4">
+                            <h5 class="text-lg font-bold text-warm-orange border-b-2 border-warm-orange pb-2">Jus de Fruits</h5>
+                            
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Mangue</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">3 000 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">100% mangue fraîche pressée</p>
+                            </div>
+
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Ananas</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">2 800 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Ananas frais du jour</p>
+                            </div>
+
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Cocktail Tropical</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">4 000 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Mélange mangue, ananas, passion</p>
+                            </div>
+                        </div>
+
+                        <!-- Boissons fraîches -->
+                        <div class="space-y-4">
+                            <h5 class="text-lg font-bold text-warm-orange border-b-2 border-warm-orange pb-2">Fraîcheurs</h5>
+                            
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Eau de Coco</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">3 000 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Coco fraîche naturelle</p>
+                            </div>
+
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Citronnade</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">2 200 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Citron vert, menthe fraîche</p>
+                            </div>
+
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Thé Glacé</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">2 000 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Thé noir glacé au citron</p>
+                            </div>
+                        </div>
+
+                        <!-- Boissons chaudes -->
+                        <div class="space-y-4">
+                            <h5 class="text-lg font-bold text-warm-orange border-b-2 border-warm-orange pb-2">Boissons Chaudes</h5>
+                            
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Café Ivoirien</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">1 800 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Café local torréfié</p>
+                            </div>
+
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Thé à la Menthe</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">1 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Thé vert, menthe fraîche</p>
+                            </div>
+
+                            <div class="menu-card p-4 rounded-lg border border-gray-100">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h6 class="font-bold text-deep-red">Chocolat Chaud</h6>
+                                    <span class="price-tag text-white px-2 py-1 rounded-full text-xs font-bold">2 500 F</span>
+                                </div>
+                                <p class="text-gray-600 italic text-xs">Cacao ivoirien authentique</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-8">
+                        <button onclick="commanderWhatsApp('boissons')" class="whatsapp-btn text-white px-8 py-3 rounded-full font-semibold flex items-center space-x-2 mx-auto hover:shadow-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            <span>Commander les Boissons</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bouton de commande général -->
+            <div class="text-center bg-gradient-to-r from-warm-orange to-deep-red p-8 rounded-2xl">
+                <h3 class="text-2xl font-elegant font-bold text-white mb-4">
+                    🍽️ Prêt à savourer nos délices ?
+                </h3>
+                <p class="text-white opacity-90 mb-6 max-w-2xl mx-auto">
+                    Commandez maintenant et découvrez les saveurs authentiques de la Côte d'Ivoire. 
+                    Livraison rapide ou à emporter !
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="commanderWhatsApp('menu complet')" class="whatsapp-btn text-white px-8 py-4 rounded-full font-bold text-lg flex items-center space-x-3 mx-auto hover:shadow-xl">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                        </svg>
+                        <span>Commander sur WhatsApp</span>
+                    </button>
+                    <button onclick="appelTelephone()" class="bg-golden hover:bg-yellow-600 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center space-x-3 mx-auto transition-all hover:shadow-xl">
+                        <span class="text-xl">📞</span>
+                        <span>Appeler : +225 07 08 09 10 11</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Fonction pour commander via WhatsApp
+        function commanderWhatsApp(categorie) {
+            const phoneNumber = "22507080910111"; // Remplacez par le vrai numéro
+            const message = `Bonjour ! Je souhaite commander des plats de la catégorie "${categorie}" de votre menu. Pouvez-vous m'aider ?`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Fonction pour appeler
+        function appelTelephone() {
+            window.location.href = "tel:+22507080910111";
+        }
+
+        // Fonction pour retourner à l'accueil
+        function retourAccueil() {
+            // Vous pouvez modifier cette URL selon votre site
+            window.history.back(); // Retour à la page précédente
+            // Ou rediriger vers une page spécifique :
+            window.location.href = "index.html";
+        }
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer toutes les cartes de menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuCards = document.querySelectorAll('.menu-card');
+            menuCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'967f4910c27e1bab',t:'MTc1Mzk4Nzg2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
